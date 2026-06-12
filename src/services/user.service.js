@@ -9,7 +9,7 @@ async function createUser(data){
 }
 
 async function getUser(id){
-    return User.fincById(id);
+    return User.findById(id);
 }
 
 async function deleteUser(id){
