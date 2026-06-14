@@ -1,8 +1,19 @@
 const User = require("../models/user.model");
 const ApiError = require("../utils/ApiError");
 
-async function getUsers(){
-    return User.find();
+async function getUsers(page=1, limit=10){
+
+    const skip = (page-1) * limit;
+
+    const users = await User.find()
+        .skip(skip)
+        .limit(limit)
+        .lean();
+
+    const total = await User.countDocuments();
+
+    return {users, page, limit, total};
+
 }
 
 async function createUser(data){
@@ -10,10 +21,11 @@ async function createUser(data){
 }
 
 async function getUser(id){
-    const user = await User.findById(id);
+    const user = await User.findById(id)
+        .lean();
 
     if(!user){
-        throw new ApiError(404, "Users not found");
+        throw new ApiError(404, "User not found");
     }
 
     return user;
