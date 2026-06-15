@@ -34,5 +34,32 @@ async function login(email, password) {
     };
 }
 
+async function getProfile(id) {
+    return await User
+                .findById(id)
+                .select("-password, -refreshToken")
+                .lean()
+}
 
-module.exports = {register, login};
+async function refresh(refreshToken) {
+    const jwt = require("jsonwebtoken");
+
+    const payload = jwt.verify(refreshToken, process.env.JWT_REFRESH);
+
+    const user = User.findById(payload.id);
+
+    if(!user || user.refreshToken !== refreshToken){
+        throw new ApiError(401, "Invalid token");
+    }
+
+    const access = createAccessToken(user);
+
+    return access;
+
+}
+
+async function logout(id) {
+    await User.findByIdAndUpdate(id, {refreshToken: null});
+}
+
+module.exports = {register, login, getProfile, refresh};

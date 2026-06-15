@@ -24,3 +24,34 @@ exports.login = asyncHandler(async (req, res) => {
     );
 
 });
+
+exports.me = asyncHandler(async (req, res) => {
+    const user = await service.getProfile(req.user.id);
+
+    res.json(
+        new ApiResponse(200, "User profile fetched", {data: user})
+    );
+});
+
+exports.refresh = asyncHandler(async (req, res) => {
+    
+    const token = req.cookies.refreshToken;
+
+    const access = await service.refresh(token);
+
+    res.json(
+        new ApiResponse(200, "Token created", {accessToken: access})
+    );
+
+});
+
+exports.logout = asyncHandler(async (req, res) => {
+    await service.logout(req.user.id);
+
+    res.clearCookie("refreshToken");
+
+    res.json(
+        new ApiResponse(200, "Logout successful")
+    );
+    
+});
