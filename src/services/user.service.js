@@ -1,4 +1,5 @@
 const User = require("../models/user.model");
+const repo = require("../repositories/user.repository");
 const ApiError = require("../utils/ApiError");
 
 async function getUsers(page=1, limit=10){
