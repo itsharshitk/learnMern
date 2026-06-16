@@ -46,6 +46,7 @@ exports.refresh = asyncHandler(async (req, res) => {
 });
 
 exports.logout = asyncHandler(async (req, res) => {
+
     await service.logout(req.user.id);
 
     res.clearCookie("refreshToken");

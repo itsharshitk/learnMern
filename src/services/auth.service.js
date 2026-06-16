@@ -46,8 +46,8 @@ async function refresh(refreshToken) {
 
     const payload = jwt.verify(refreshToken, process.env.JWT_REFRESH);
 
-    const user = User.findById(payload.id);
-
+    const user = await User.findById(payload.id);
+    
     if(!user || user.refreshToken !== refreshToken){
         throw new ApiError(401, "Invalid token");
     }
@@ -62,4 +62,4 @@ async function logout(id) {
     await User.findByIdAndUpdate(id, {refreshToken: null});
 }
 
-module.exports = {register, login, getProfile, refresh};
+module.exports = {register, login, getProfile, refresh, logout};
