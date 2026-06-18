@@ -20,4 +20,10 @@ function uploadImage(buffer) {
     );
 }
 
-module.exports = {uploadImage};
+async function deleteImage(publicId) {
+    if(!publicId) return;
+
+    await cloudinary.uploader.destroy(publicId);
+}
+
+module.exports = {uploadImage, deleteImage};

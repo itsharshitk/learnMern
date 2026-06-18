@@ -23,7 +23,11 @@ const userSchema = new mongoose.Schema(
         },
         refreshToken: String,
         avatar: {
-            type: String
+            url: String,
+            publicId: String,
+            size: Number,
+            width: Number,
+            height: Number
         }
     },
     {
