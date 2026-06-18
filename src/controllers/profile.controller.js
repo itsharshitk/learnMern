@@ -8,8 +8,9 @@ exports.uploadAvatar = asyncHandler(
         if(!req.file){
             throw new ApiError(400, "Image required");
         }
+        
+const user = await service.updateAvatar(req.user.id, req.file);
 
-        const user = await service.updateAvatar(req.user.id, req.file);
 
         res.json(
             new ApiResponse(200, "Image updated successfully", user)

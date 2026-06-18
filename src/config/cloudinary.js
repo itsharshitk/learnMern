@@ -3,11 +3,11 @@ const config = require("./index");
 
 cloudinary.config({
     
-    cloudinary_name: process.env.CLOUDINARY_NAME,
+    cloud_name: config.cloudinary_name,
 
-    api_key: process.env.CLOUDINARY_KEY,
+    api_key: config.cloudinary_key,
     
-    api_secret: process.env.CLOUDINARY_SECRET
+    api_secret: config.cloudinary_secret
 });
 
 module.exports = cloudinary;

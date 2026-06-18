@@ -40,4 +40,4 @@ async function updateAvatar(userId, file) {
 
 }
 
-module.exports = updateAvatar;
+module.exports = {updateAvatar};

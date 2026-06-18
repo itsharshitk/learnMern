@@ -9,5 +9,11 @@ module.exports = {
     
     jwt_secret: process.env.JWT_SECRET,
     
-    jwt_refresh: process.env.JWT_REFRESH
+    jwt_refresh: process.env.JWT_REFRESH,
+
+    cloudinary_name: process.env.CLOUDINARY_NAME,
+
+    cloudinary_key: process.env.CLOUDINARY_KEY,
+    
+    cloudinary_secret: process.env.CLOUDINARY_SECRET
 }
