@@ -15,5 +15,15 @@ module.exports = {
 
     cloudinary_key: process.env.CLOUDINARY_KEY,
     
-    cloudinary_secret: process.env.CLOUDINARY_SECRET
+    cloudinary_secret: process.env.CLOUDINARY_SECRET,
+
+    redis_url: process.env.REDIS_URL,
+
+    smtp_host: process.env.SMTP_HOST,
+    smpt_port: process.env.SMTP_PORT,
+
+    smpt_user: process.env.SMTP_USER,
+    smpt_pass: process.env.SMTP_PASS,
+
+    app_url: process.env.APP_URL
 }

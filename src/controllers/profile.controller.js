@@ -9,7 +9,7 @@ exports.uploadAvatar = asyncHandler(
             throw new ApiError(400, "Image required");
         }
         
-const user = await service.updateAvatar(req.user.id, req.file);
+        const user = await service.updateAvatar(req.user.id, req.file);
 
 
         res.json(

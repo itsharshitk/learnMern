@@ -7,28 +7,45 @@ const userSchema = new mongoose.Schema(
             type: String,
             required: true
         },
+
         email: {
             type: String,
             required: true,
             unique: true
         },
+
         password: {
             type: String,
             required: true
         },
+
         role: {
             type: String,
             enum: ["user", "admin"],
             default: "user"
         },
+
         refreshToken: String,
+
         avatar: {
             url: String,
             publicId: String,
             size: Number,
             width: Number,
             height: Number
-        }
+        },
+
+        isVerified: {
+            type: Boolean,
+            default:false
+        },
+
+        verificationToken: String,
+
+        resetPasswordToken: String,
+        
+        resetPasswordExpire: Date
+
     },
     {
         timestamps: true
