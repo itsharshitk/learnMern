@@ -25,8 +25,6 @@ const userSchema = new mongoose.Schema(
             default: "user"
         },
 
-        refreshToken: String,
-
         avatar: {
             url: String,
             publicId: String,
@@ -40,6 +38,8 @@ const userSchema = new mongoose.Schema(
             default:false
         },
 
+        refreshToken: String,
+        
         verificationToken: String,
 
         resetPasswordToken: String,

@@ -20,10 +20,10 @@ module.exports = {
     redis_url: process.env.REDIS_URL,
 
     smtp_host: process.env.SMTP_HOST,
-    smpt_port: process.env.SMTP_PORT,
+    smtp_port: process.env.SMTP_PORT,
 
-    smpt_user: process.env.SMTP_USER,
-    smpt_pass: process.env.SMTP_PASS,
+    smtp_user: process.env.SMTP_USER,
+    smtp_pass: process.env.SMTP_PASS,
 
     app_url: process.env.APP_URL
 }

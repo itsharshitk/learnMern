@@ -1,4 +1,4 @@
-const Worker = require("bullmq");
+const { Worker } = require("bullmq");
 const Redis = require("ioredis");
 const { sendMail } = require("../services/mail.service");
 const config = require("../config");
@@ -11,7 +11,7 @@ const worker = new Worker(
                 },
                 
                 {
-                    connection: new Redis(config.redis_url)
+                    connection: new Redis(config.redis_url, { maxRetriesPerRequest: null }),
                 }
 );
 
@@ -20,3 +20,9 @@ worker.on("completed",
         console.log("Mail sent");
     }
 );
+
+worker.on("failed",
+    (job, error) => {
+        console.error("Mail Failed: ", error);
+    }
+)

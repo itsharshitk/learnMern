@@ -14,6 +14,17 @@ exports.register = asyncHandler(
     }
 );
 
+exports.verify = asyncHandler(
+    async (req, res) => {
+        
+        await service.verify(req.params.token);
+        
+        res.json(
+            { success: true }
+        );
+    }
+);
+
 exports.login = asyncHandler(async (req, res) => {
     
     const result = await service.login(req.body.email, req.body.password);
@@ -56,3 +67,23 @@ exports.logout = asyncHandler(async (req, res) => {
     );
     
 });
+
+exports.forgotPassword = asyncHandler(
+    async (req, res) => {
+        await service.forgotPassword(req.body.email);
+
+        res.json({
+            success: true
+        });
+    }
+);
+
+exports.resetPassword = asyncHandler(
+    async (req, res) => {
+        await service.resetPassword(req.params.token, req.body.password);
+
+        res.json({
+            success: true
+        });
+    }
+);
