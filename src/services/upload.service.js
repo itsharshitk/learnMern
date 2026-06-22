@@ -1,6 +1,7 @@
 const cloudinary = require("../config/cloudinary");
 
 function uploadImage(buffer) {
+    
     return new Promise(
         (resolve, reject) => {
             const stream = cloudinary.uploader.upload_stream(
@@ -14,7 +15,7 @@ function uploadImage(buffer) {
                     resolve(result);
                 }
             );
-
+    
             stream.end(buffer);
         }
     );

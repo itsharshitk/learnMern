@@ -4,7 +4,6 @@ const {uploadImage, deleteImage} = require("./upload.service");
 const ApiError = require("../utils/ApiError");
 
 async function updateAvatar(userId, file) {
-    
     const user = await User.findById(userId);
 
     if(!user){
@@ -15,11 +14,11 @@ async function updateAvatar(userId, file) {
                                 .resize(500, 500, {fit: "cover"})
                                 .webp({quality: 80})
                                 .toBuffer();
-
+    
     if(user.avatar?.publicId){
         await deleteImage(user.avatar.publicId);
     }
-
+    
     const uploadedImage = await uploadImage(processedBuffer);
 
     user.avatar = {
@@ -29,7 +28,7 @@ async function updateAvatar(userId, file) {
         width: uploadedImage.width,
         height: uploadedImage.height
     }
-
+    
     await user.save();
 
     // return User.findById(userId).select("-password");
