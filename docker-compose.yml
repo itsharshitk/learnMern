@@ -16,6 +16,21 @@ services:
       - mongo
       - redis
 
+  worker:
+    build: .
+
+    volumes:
+      - ".:/app"
+      - "/app/node_modules"
+
+    env_file:
+      - .env
+
+    command: ["node", "worker.js"]
+
+    depends_on:
+      - redis
+
   mongo:
     image: mongo:8
 

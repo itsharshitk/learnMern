@@ -18,9 +18,21 @@ async function updateAvatar(userId, file) {
     if(user.avatar?.publicId){
         await deleteImage(user.avatar.publicId);
     }
-    
+    console.log(
+    ">>>>>>>>>>>>>>>>>>>Original:",
+    file.buffer?.length
+);
+
+console.log(
+    "Processed:",
+    processedBuffer?.length
+);
+
+    // const uploadedImage = await uploadImage(file.buffer);
     const uploadedImage = await uploadImage(processedBuffer);
 
+    console.log("=========================== after upload not working");
+    
     user.avatar = {
         url: uploadedImage.secure_url,
         publicId: uploadedImage.public_id,
