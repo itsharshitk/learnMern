@@ -2,6 +2,8 @@ const express = require("express");
 const pinoHttp = require("pino-http");
 const logger = require("./utils/logger");
 const cookieParser = require("cookie-parser");
+const swaggerUi = require("swagger-ui-express");
+const swaggerSpec = require("./config/swagger");
 const app = express();
 
 app.use(cookieParser());
@@ -9,6 +11,8 @@ app.use(cookieParser());
 app.use(pinoHttp({logger}));
 
 app.use(express.json());
+
+app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.use("/auth", require("./routes/auth.routes"));
 
