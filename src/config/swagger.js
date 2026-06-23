@@ -9,7 +9,9 @@ const options = {
         }
     },
     apis: [
-        "./src/routes/*.js"
+        "./src/routes/*.js",
+        "./src/docs/schemas/*.js",
+        "./src/docs/*.js"
     ]
 }
 
