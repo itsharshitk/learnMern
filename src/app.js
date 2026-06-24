@@ -12,7 +12,16 @@ app.use(pinoHttp({logger}));
 
 app.use(express.json());
 
-app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use(
+    "/docs", 
+    swaggerUi.serve, 
+    swaggerUi.setup(swaggerSpec, {
+        swaggerOptions: {
+            docExpansion: "none",
+            defaultModelsExpandDepth: -1 
+        },
+    })
+);
 
 app.use("/auth", require("./routes/auth.routes"));
 

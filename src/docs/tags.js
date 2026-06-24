@@ -5,4 +5,6 @@
  *      description: User Management
  *    - name: Authentication
  *      description: User Authentications
+ *    - name: Profile
+ *      description: User Profile Management
  */
