@@ -7,4 +7,6 @@
  *      description: User Authentications
  *    - name: Profile
  *      description: User Profile Management
+ *    - name: Admin
+ *      description: Admin Management
  */

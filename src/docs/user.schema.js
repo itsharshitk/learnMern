@@ -14,7 +14,7 @@
  *         email:
  *           type: string
  *           format: email
- *           example: john@example.com
+ *           example: john@yopmail.com
  *         role:
  *           type: string
  *           enum: [user, admin]
@@ -55,7 +55,7 @@
  *         email:
  *           type: string
  *           format: email
- *           example: john@example.com
+ *           example: john@yopmail.com
  *         password:
  *           type: string
  *           format: password
@@ -63,7 +63,11 @@
  *         role:
  *           type: string
  *           enum: [user, admin]
- *           example: user
+ *           example: admin
+ *         avatar:
+ *           type: string
+ *           format: binary
+ *           description: Avatar image file
  *
  *     UserResponse:
  *       allOf:

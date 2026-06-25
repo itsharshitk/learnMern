@@ -1,6 +1,8 @@
 const User = require("../models/user.model");
 const repo = require("../repositories/user.repository");
 const ApiError = require("../utils/ApiError");
+const { uploadImage } = require("./upload.service");
+const { processedProfile } = require("../utils/processImage");
 
 async function getUsers(page=1, limit=10){
 
@@ -17,8 +19,24 @@ async function getUsers(page=1, limit=10){
 
 }
 
-async function createUser(data){
-    return User.create(data);
+async function createUser(body, file){
+    let avatar;
+
+    if(file){
+        const processedBuffer = await processedProfile(file.buffer);
+
+        const uploadedImage = await uploadImage(processedBuffer);
+
+        avatar = {
+            url: uploadedImage.secure_url,
+            publicId: uploadedImage.public_id,
+            size: uploadedImage.bytes,
+            width: uploadedImage.width,
+            height: uploadedImage.height
+        }
+    }
+
+    return User.create({...body, avatar});
 }
 
 async function getUser(id){

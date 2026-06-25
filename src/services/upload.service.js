@@ -2,11 +2,6 @@ const cloudinary = require("../config/cloudinary");
 
 function uploadImage(buffer){
 
-    console.log(
-        "Uploading bytes:",
-        buffer.length
-    );
-
     return new Promise(
         (resolve, reject)=>{
 
@@ -17,13 +12,7 @@ function uploadImage(buffer){
                         timeout:60000
                     },
                     (err,result)=>{
-
-                        console.log(
-                            "Cloudinary callback"
-                        );
-
                         if(err){
-                            console.error(err);
                             return reject(err);
                         }
 

@@ -33,7 +33,7 @@
  *         email:
  *           type: string
  *           format: email
- *           example: john@example.com
+ *           example: john@yopmail.com
  *         role:
  *           type: string
  *           enum:
@@ -65,7 +65,7 @@
  *         email:
  *           type: string
  *           format: email
- *           example: john@example.com
+ *           example: john@yopmail.com
  *         password:
  *           type: string
  *           format: password
@@ -80,7 +80,7 @@
  *         email:
  *           type: string
  *           format: email
- *           example: john@example.com
+ *           example: john@yopmail.com
  *         password:
  *           type: string
  *           format: password
@@ -108,7 +108,7 @@
  *         email:
  *           type: string
  *           format: email
- *           example: john@example.com
+ *           example: john@yopmail.com
  *
  *     ResetPasswordRequest:
  *       type: object

@@ -29,6 +29,8 @@ app.use("/users", require("./routes/user.routes"));
 
 app.use("/profile", require("./routes/profile.routes"));
 
+app.use("/", require("./routes/admin.routes"));
+
 const errorHandler = require("./middleware/error.middleware");
 
 app.use(errorHandler);

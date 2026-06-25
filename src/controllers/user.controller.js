@@ -14,7 +14,8 @@ exports.getUsers = asyncHandler( async (req, res) => {
 });
 
 exports.createUser = asyncHandler( async (req, res) => {
-    const createdUser = await userService.createUser(req.body);
+    const createdUser = await userService.createUser(req.body, req.file);
+
     res.status(201).json(
         new ApiResponse(201, "User Created Successfully", createdUser)
     );

@@ -2,6 +2,7 @@ const router = require("express").Router();
 const controller = require("../controllers/user.controller");
 const validate = require("../middleware/validate");
 const { createUserSchema } = require("../validators/user.validator");
+const upload = require("../middleware/upload.middleware");
 
 
 /**
@@ -10,6 +11,19 @@ const { createUserSchema } = require("../validators/user.validator");
  *   get:
  *     tags: [Users]
  *     summary: Get all users
+ *     parameters:
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *           default: 1
+ *         description: Page number
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
+ *           default: 10
+ *         description: Number of users per page
  *     responses:
  *       200:
  *         description: Users fetched successfully
@@ -29,7 +43,7 @@ router.get("/", controller.getUsers);
  *     requestBody:
  *       required: true
  *       content:
- *         application/json:
+ *         multipart/form-data:
  *           schema:
  *             $ref: '#/components/schemas/CreateUserRequest'
  *     responses:
@@ -40,7 +54,7 @@ router.get("/", controller.getUsers);
  *             schema:
  *               $ref: '#/components/schemas/UserResponse'
  */
-router.post("/", validate(createUserSchema), controller.createUser);
+router.post("/", upload.single("avatar"), validate(createUserSchema), controller.createUser);
 
 /**
  * @swagger
