@@ -4,7 +4,6 @@ const service = require("../services/auth.service");
 
 exports.register = asyncHandler(
     async (req, res) => {
-        
         const user = await service.register(req.body);
        
         res.status(201).json(
