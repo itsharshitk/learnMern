@@ -18,3 +18,5 @@ afterAll(async () => {
     await mongoose.connection.dropDatabase();
     await mongoose.disconnect();
 });
+
+// docker compose exec api npm test
