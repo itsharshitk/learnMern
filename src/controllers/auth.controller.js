@@ -30,7 +30,7 @@ exports.login = asyncHandler(async (req, res) => {
     
     res.cookie("refreshToken", result.refreshToken, {httpOnly:true, secure:false})
     .status(200).json(
-        new ApiResponse(200, "Login Successful", {accessToken: result.accessToken})
+        new ApiResponse(200, "Login Successful", {user: result.user, accessToken: result.accessToken})
     );
 
 });

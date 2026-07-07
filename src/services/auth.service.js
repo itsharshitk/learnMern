@@ -66,10 +66,13 @@ async function login(email, password) {
 
     await user.save();
 
+    const userResp = user.toJSON(); // or user.toObject()
+    delete userResp.refreshToken;
+
     return {
         accessToken,
         refreshToken,
-        user
+        user: userResp,
     };
 }
 
