@@ -157,10 +157,7 @@
  *         - type: object
  *           properties:
  *             data:
- *               type: object
- *               properties:
- *                 data:
- *                   $ref: '#/components/schemas/User'
+ *               $ref: '#/components/schemas/User'
  *
  *     LogoutApiResponse:
  *       allOf:

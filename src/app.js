@@ -1,10 +1,17 @@
 const express = require("express");
+const cors = require("cors");
 const pinoHttp = require("pino-http");
 const logger = require("./utils/logger");
 const cookieParser = require("cookie-parser");
 const swaggerUi = require("swagger-ui-express");
 const swaggerSpec = require("./config/swagger");
 const app = express();
+
+app.use(cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+}));
+// app.use(cors());
 
 app.use(cookieParser());
 

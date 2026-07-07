@@ -39,7 +39,7 @@ exports.me = asyncHandler(async (req, res) => {
     const user = await service.getProfile(req.user.id);
 
     res.json(
-        new ApiResponse(200, "User profile fetched", {data: user})
+        new ApiResponse(200, "User profile fetched", user)
     );
 });
 
